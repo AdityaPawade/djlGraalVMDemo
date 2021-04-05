@@ -1,0 +1,10 @@
+{
+  "resources":{
+  "includes":[
+    {"pattern":"\\QMETA-INF/services/ai.djl.engine.EngineProvider\\E"}, 
+    {"pattern":"\\Qcom/sun/jna/darwin/libjnidispatch.jnilib\\E"}, 
+    {"pattern":"\\Qnative/lib/mxnet.properties\\E"}, 
+    {"pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"}
+  ]},
+  "bundles":[]
+}
