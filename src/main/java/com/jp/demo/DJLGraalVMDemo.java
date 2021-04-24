@@ -36,13 +36,12 @@ public class DJLGraalVMDemo {
                 0.0003,     0.0323,     0,          0.1803,     0.7540,     -1.0000,    -1.0000,    1.0000},
             new int[]{1, 8}
         );
-        //
-        //        Dl4jModel model = new Dl4jModel(synapseWeights);
-        //        INDArray output = model.infer(input);
-        //        model.close();
 
-        DJLModel djlModel = new DJLModel(synapseWeights);
-        JNDArray djlOutput = djlModel.infer(input);
+        Dl4jModel model = new Dl4jModel(synapseWeights);
+        JNDArray output = model.infer(input);
+
+//        DJLModel djlModel = new DJLModel(synapseWeights);
+//        JNDArray djlOutput = djlModel.infer(input);
 
         System.out.println("demo successful");
     }

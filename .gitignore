@@ -8,6 +8,8 @@ logs/
 *.pyc
 graph-tmp/
 
+native/bin
+
 .DS_Store
 pom.xml.releaseBackup
 
