@@ -1,4 +1,4 @@
-FROM adityap174/poc:buster
+FROM demo/poc:buster
 
 # Install basic utilities
 RUN apt-get update && \

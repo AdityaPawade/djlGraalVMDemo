@@ -6,8 +6,8 @@ M2_DIR="${HOME}"/.m2
 
 function env_build() {
 
-  docker build -t adityap174/poc:buster build/env/buster
-  docker build -t adityap174/poc:buster-graalvm build/env/buster-graalvm
+  docker build -t demo/poc:buster build/env/buster
+  docker build -t demo/poc:buster-graalvm build/env/buster-graalvm
 }
 
 function jar_build() {
@@ -19,7 +19,7 @@ function jar_build() {
     -e MOUNT_DIR="${MOUNT_DIR}" \
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -v "${M2_DIR}":"${MOUNT_DIR}"/.m2 \
-    adityap174/poc:buster-graalvm $MOUNT_DIR/native/build/buildDemoJar.sh
+    demo/poc:buster-graalvm $MOUNT_DIR/native/build/buildDemoJar.sh
 }
 
 function native_build() {
@@ -31,7 +31,7 @@ function native_build() {
     -e MOUNT_DIR="${MOUNT_DIR}" \
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -v "${M2_DIR}":"${MOUNT_DIR}"/.m2 \
-    adityap174/poc:buster-graalvm $MOUNT_DIR/native/build/buildDemoNative.sh
+    demo/poc:buster-graalvm $MOUNT_DIR/native/build/buildDemoNative.sh
 }
 
 function launch_bash_on_build_env() {
@@ -44,7 +44,7 @@ function launch_bash_on_build_env() {
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -v "${M2_DIR}":"${MOUNT_DIR}"/.m2 \
     -p 17402:17402 \
-    adityap174/poc:buster-graalvm bash
+    demo/poc:buster-graalvm bash
 }
 
 function launch_bash_on_test_env() {
@@ -57,7 +57,7 @@ function launch_bash_on_test_env() {
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -v "${M2_DIR}":"${MOUNT_DIR}"/.m2 \
     -p 17402:17402 \
-    adityap174/poc:buster bash
+    demo/poc:buster bash
 }
 
 function jar_run() {
@@ -70,7 +70,7 @@ function jar_run() {
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -v "${M2_DIR}":"${MOUNT_DIR}"/.m2 \
     -p 17402:17402 \
-    adityap174/poc:buster-graalvm \
+    demo/poc:buster-graalvm \
     java -agentlib:native-image-agent=config-output-dir=$MOUNT_DIR/native/configs/META-INF/native-image/ \
     -cp $MOUNT_DIR/target/demo-1.0-bin.jar com.jp.demo.DJLGraalVMDemo
 }
@@ -84,7 +84,7 @@ function native_run() {
     -e MOUNT_DIR="${MOUNT_DIR}" \
     -v "${LOCAL_DIR}":"${MOUNT_DIR}" \
     -p 17402:17402 \
-    adityap174/poc:buster $MOUNT_DIR/native/build/runDemoNative.sh
+    demo/poc:buster $MOUNT_DIR/native/build/runDemoNative.sh
 }
 
 action=$1
